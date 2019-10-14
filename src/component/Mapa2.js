@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import { Map, Marker, InfoWindow, GoogleApiWrapper } from 'google-maps-react';
 export class MapContainer extends Component {
     state = {
+        coordenadas: {
+           lat: 17.999006, lng: -92.925308
+        }
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
@@ -30,7 +33,8 @@ export class MapContainer extends Component {
             <Map google={this.props.google}
                 onClick={this.onMapClicked}>
                 <Marker onClick={this.onMarkerClick}
-                    name={'Current location'} />
+                    name={'Current location'}
+            position={this.state.coordenadas}/>
 
                 <InfoWindow
                     marker={this.state.activeMarker}
